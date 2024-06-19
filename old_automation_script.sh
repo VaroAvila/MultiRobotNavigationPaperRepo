@@ -9,13 +9,12 @@ restart_gazebo_and_ros() {
     echo "Restarting Gazebo and ROS2..."
     pkill -9 gzserver
     pkill -9 gzclient
-    pkill -9 ros2
+    # pkill -9 ros2
     sleep 2
     # gzserver &
     # sleep 2
 }
 
-# Function to close all open gnome-terminal windows
 close_all_gnome_terminals() {
     echo "Cerrando todas las consolas de gnome-terminal abiertas..."
     pkill -f gnome-terminal
@@ -27,6 +26,12 @@ clean_cache() {
     rm -rf ~/.gazebo/log/*
     rm -rf /tmp/gazebo/*
     # rm -rf /tmp/ros2/*
+}
+
+# Function to close all open gnome-terminal windows
+close_all_gnome_terminals() {
+    echo "Closing all open gnome-terminal windows..."
+    pkill -f gnome-terminal
 }
 
 # Function to capture the PGID
@@ -87,8 +92,8 @@ for scenario in {1..6}; do
             restart_gazebo_and_ros
             clean_cache
 
-            echo "Waiting 10 seconds to ensure complete cleanup..."
-            sleep 10
+            echo "Waiting 5 seconds to ensure complete cleanup..."
+            sleep 5
 
             # Launch navigation process
             echo "Launching navigation process with file: $nav_file"
@@ -96,7 +101,7 @@ for scenario in {1..6}; do
             pgids+=($PGID_NAV)
 
             echo "Waiting 5 seconds for navigation process initialization..."
-            sleep 3
+            sleep 5
 
             # Launch corresponding simulation scenario
             echo "Launching simulation scenario: exp${scenario}.launch.py"
@@ -106,21 +111,13 @@ for scenario in {1..6}; do
             echo "Waiting 5 seconds before launching rviz..."
             sleep 5
 
-            # Launch RViz after the simulation
+            # Launch Rviz after the simulation
             echo "Launching RViz..."
             PGID_RVIZ=$(launch_and_capture_pgid "ros2 launch neo_nav2_bringup rviz_launch.py rviz_config:=install/neo_nav2_bringup/share/neo_nav2_bringup/rviz/multi_robot.rviz" "/tmp/rviz_pid.txt")
             pgids+=($PGID_RVIZ)
 
-            echo "Waiting 5 seconds before launching initial poses..."
-            sleep 5
-
-            # Launch initial poses script after RViz
-            echo "Launching initial poses for scenario $scenario..."
-            PGID_INITIAL_POSES=$(launch_and_capture_pgid "bash ~/ros2_humble_wss/thesis_wsp/start_scripts/generate_initialposes_scenario${scenario}.sh; sleep 6; exit" "/tmp/initial_poses_pid.txt")
-            pgids+=($PGID_INITIAL_POSES)
-
-            echo "Waiting 4 seconds before launching data collection nodes..."
-            sleep 8
+            echo "Waiting 4 seconds before launching data collecion nodes..."
+            sleep 4
 
             # Collect data for each robot before launching goals
             for robot_id in {0..2}; do
@@ -148,9 +145,11 @@ for scenario in {1..6}; do
 
             close_all_gnome_terminals
 
+
             echo "Scenario $scenario, Navigation $nav_label, Repetition $repetition completed."
 
             echo -e "**************\nFINISHING TEST\n**************"
+
         done
     done
 done
