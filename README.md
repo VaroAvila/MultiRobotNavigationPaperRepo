@@ -56,4 +56,4 @@ To test the [path prediction layer](https://github.com/VaroAvila/path_prediction
 > [!WARNING]
 > The multiple nodes running can cause errors in the simulation, like some services not loading when needed, causing some scenarios to fail. This error is related to the Neobotix simulation packages
 > 
-> The timings set on the automation_script.sh try to reduce this issues as much as possible 
+> The timings set on the automation_script.sh try to reduce this issue as much as possible 
