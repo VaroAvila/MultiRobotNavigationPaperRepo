@@ -11,8 +11,6 @@ restart_gazebo_and_ros() {
     pkill -9 gzclient
     pkill -9 ros2
     sleep 2
-    # gzserver &
-    # sleep 2
 }
 
 # Function to close all open gnome-terminal windows
@@ -26,7 +24,6 @@ clean_cache() {
     echo "Cleaning cache and temporary files..."
     rm -rf ~/.gazebo/log/*
     rm -rf /tmp/gazebo/*
-    # rm -rf /tmp/ros2/*
 }
 
 # Function to capture the PGID
@@ -44,7 +41,7 @@ capture_pgid() {
     echo $pgid
 }
 
-# Function to launch processes
+# Function to launch processes and capture PGIDs
 launch_and_capture_pgid() {
     local command=$1
     local pid_file=$2
@@ -72,6 +69,7 @@ for scenario in {1..6}; do
             nav_file=${navigation_files_payload[$nav_type]}
         fi
         nav_label=$(echo $nav_file | cut -d'_' -f5)  # extract 'nofp' or 'fp'
+        file_extension="py"  # Ensure file extension is included in filename
 
         # Repeat each navigation type 5 times
         for repetition in {1..5}; do
@@ -125,7 +123,7 @@ for scenario in {1..6}; do
             # Collect data for each robot before launching goals
             for robot_id in {0..2}; do
                 echo "Collecting data for robot${robot_id}..."
-                data_filename="exp_data_${nav_label}_experiment${scenario}_repetition${repetition}_robot${robot_id}.csv"
+                data_filename="exp_data_${nav_label}.launch.${file_extension}_experiment${scenario}_repetition${repetition}_robot${robot_id}.csv"
                 data_file_path="~/ros2_humble_wss/thesis_wsp/exp_data/${data_filename}"
                 PGID_DATA=$(launch_and_capture_pgid "python3 ~/ros2_humble_wss/thesis_wsp/src/amcl_csv_writer.py /robot${robot_id}/amcl_pose ${data_file_path}" "/tmp/data_pid_${robot_id}.txt")
                 pgids+=($PGID_DATA)
