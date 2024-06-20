@@ -18,6 +18,11 @@ git clone https://github.com/VaroAvila/MultiRobotNavigationPaperRepo
 
 Run the automation script with:
 
+> [!IMPORTANT]
+> Run the automation script with a CLI/console like XTerm or Terminator, don't use the Gnome CLI to run the script or the simulation will not succeed. The script contains some lines to kill all the gnome consoles at the end of every scenario loop due to some issues handling Gazebo's consoles via PIDs or PGIDs.
+<br>
+
+
 ```
 bash automation_script.sh
 ```
