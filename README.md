@@ -29,7 +29,7 @@ bash automation_script.sh
 
 The simulation pipeline will start with the predefined scenarios. In this case, it uses a set of 6 scenarios and specific navigation files.
 
-The .csv files will the trajectory data will be saved in the exp_data folder in .csv format, containing the trajectory and time of each robot for each scenario, repetition and stating if it uses the footprint and path prediction layer (fp) or not (nofp). 
+The .csv files with the trajectory data will be saved in the exp_data folder in .csv format, containing the trajectory and time of each robot for each scenario, repetition and stating if it uses the footprint and path prediction layer (fp) or not (nofp). 
 
 To test the [path prediction layer](https://github.com/VaroAvila/path_prediction_costmap_layer) and the [footprint layer](https://github.com/VaroAvila/footprint_costmap_layer) check their respective readme files to adapt the parameters according to the scenarios. (e.g. change shared path and speeds, or footprint padding)
 <br>
