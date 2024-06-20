@@ -95,7 +95,7 @@ for scenario in {1..6}; do
             PGID_NAV=$(launch_and_capture_pgid "ros2 launch neo_simulation2 $nav_file" "/tmp/ros2_pid.txt")
             pgids+=($PGID_NAV)
 
-            echo "Waiting 5 seconds for navigation process initialization..."
+            echo "Waiting 3 seconds for navigation process initialization..."
             sleep 3
 
             # Launch corresponding simulation scenario
@@ -119,7 +119,7 @@ for scenario in {1..6}; do
             PGID_INITIAL_POSES=$(launch_and_capture_pgid "bash ~/ros2_humble_wss/thesis_wsp/start_scripts/generate_initialposes_scenario${scenario}.sh; sleep 6; exit" "/tmp/initial_poses_pid.txt")
             pgids+=($PGID_INITIAL_POSES)
 
-            echo "Waiting 4 seconds before launching data collection nodes..."
+            echo "Waiting 8 seconds before launching data collection nodes..."
             sleep 8
 
             # Collect data for each robot before launching goals
@@ -140,7 +140,7 @@ for scenario in {1..6}; do
 
             # Wait before terminating all processes
             echo "Waiting 70 seconds before terminating all processes..."
-            sleep 10
+            sleep 70
             echo "Terminating all processes..."
             for pgid in "${pgids[@]}"; do
                 kill -TERM -$pgid 2>/dev/null
