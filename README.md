@@ -18,14 +18,14 @@ git clone https://github.com/VaroAvila/MultiRobotNavigationPaperRepo
 
 Run the automation script with:
 
+```
+bash automation_script.sh
+```
+
 > [!IMPORTANT]
 > Run the automation script with a CLI/console like XTerm or Terminator, don't use the Gnome CLI to run the script or the simulation will not succeed. The script contains some lines to kill all the gnome consoles at the end of every scenario loop due to some issues handling Gazebo's consoles via PIDs or PGIDs.
 <br>
 
-
-```
-bash automation_script.sh
-```
 
 The simulation pipeline will start with the predefined scenarios. In this case, it uses a set of 6 scenarios and specific navigation files.
 
