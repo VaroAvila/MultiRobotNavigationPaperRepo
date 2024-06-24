@@ -1,0 +1,61 @@
+Configuration	Mission	Repetition	TimeTaken	Status
+fp	1	1		failure
+fp	1	2		LOAD ERROR
+fp	1	3		LOAD ERROR
+fp	1	4		LOAD ERROR
+fp	1	5		LOAD ERROR
+fp	2	1		LOAD ERROR
+fp	2	2		LOAD ERROR
+fp	2	3		failure
+fp	2	4		failure
+fp	2	5		failure
+fp	3	1		LOAD ERROR
+fp	3	2		failure
+fp	3	3	35.75500000000001	success
+fp	3	4		failure
+fp	3	5		LOAD ERROR
+fp	4	1		LOAD ERROR
+fp	4	2		LOAD ERROR
+fp	4	3		failure
+fp	4	4		failure
+fp	4	5		LOAD ERROR
+fp	5	1		failure
+fp	5	2		failure
+fp	5	3	35.53699999999999	success
+fp	5	4		failure
+fp	5	5	38.065	success
+fp	6	1		failure
+fp	6	2		failure
+fp	6	3		failure
+fp	6	4		failure
+fp	6	5		failure
+nofp	1	1	38.419	success
+nofp	1	2		LOAD ERROR
+nofp	1	3	38.194	success
+nofp	1	4		failure
+nofp	1	5	37.736999999999995	success
+nofp	2	1		failure
+nofp	2	2		LOAD ERROR
+nofp	2	3		failure
+nofp	2	4		failure
+nofp	2	5		failure
+nofp	3	1	40.902	success
+nofp	3	2		failure
+nofp	3	3		failure
+nofp	3	4		failure
+nofp	3	5		LOAD ERROR
+nofp	4	1		LOAD ERROR
+nofp	4	2		failure
+nofp	4	3		failure
+nofp	4	4		failure
+nofp	4	5		failure
+nofp	5	1	37.864999999999995	success
+nofp	5	2		failure
+nofp	5	3		failure
+nofp	5	4	30.914999999999992	success
+nofp	5	5		failure
+nofp	6	1		failure
+nofp	6	2	42.565	success
+nofp	6	3	43.34500000000001	success
+nofp	6	4	43.473	success
+nofp	6	5	38.96600000000001	success
