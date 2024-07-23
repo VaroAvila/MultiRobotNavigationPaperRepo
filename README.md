@@ -37,13 +37,13 @@ To test the [path prediction layer](https://github.com/VaroAvila/path_prediction
 ## Additional tools:
 <br>
 
-1. graph_generation.py: generates trajectory graphs for each of the simulation scenarios
+1. map_generation.py: generates trajectory plots for each of the simulation scenarios. Can be found in the map_generator_thesis/ folder.
 
 2. verification_script.py: generates a .txt file and a .csv file evaluating the results from the .csv trajectory data files. 
 <br>
 
 > [!NOTE]
-> A new plot generation tool has been recently uploaded.
+> A new plot generation tool has been recently uploaded: map_generation.py
 > 
 > Due to the way the data is stored, there might be offsets between the map (backgorund) and the trajectories on the plots. To manually fix it, play with the offset parameters provided in the graph generation python script.
 <br>
